@@ -8,6 +8,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import Logo from "@/components/logo";
+
 const workspaceSignals = [
   { label: "Active brief", value: "Launch readiness", icon: FileText },
   { label: "Open threads", value: "12 conversations", icon: MessageSquare },
@@ -164,7 +166,7 @@ export default function Home() {
         >
           <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 md:flex-row md:items-start md:justify-between">
             <div className="flex flex-col gap-4">
-              <span className="text-xl font-bold tracking-tighter">niceai</span>
+              <Logo showLabel={false} className="text-xl" />
               <p className="max-w-xs text-sm text-muted-foreground">
                 AI-powered workspace management. Built for modern teams.
               </p>
