@@ -5,7 +5,9 @@ pre-commit:
   parallel: true
   jobs:
     - name: oxlint
-      run: bun oxlint --fix {staged_files}
+      run: |
+        files=$(echo {staged_files} | tr ' ' '\n' | grep -E '\.(js|ts|tsx|mjs|cjs)$' || true)
+        [ -n "$files" ] && bun oxlint --fix $files || true
       stage_fixed: true
     - name: oxfmt
       run: bun oxfmt --write {staged_files}
