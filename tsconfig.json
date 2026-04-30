@@ -1,0 +1,3 @@
+{
+  "extends": "@niceai/config/tsconfig.base.json"
+}
