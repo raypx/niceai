@@ -8,13 +8,9 @@ RUN bun run build --filter=web
 
 FROM base AS runner
 ENV NODE_ENV=production
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
-
-USER nextjs
+COPY --from=builder /app/apps/web/.next/standalone ./
+COPY --from=builder /app/apps/web/.next/static ./apps/web/.next/static
 
 EXPOSE 3000
 ENV PORT=3000

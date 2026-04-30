@@ -10,5 +10,7 @@ pre-commit:
         [ -n "$files" ] && bun oxlint --fix $files || true
       stage_fixed: true
     - name: oxfmt
-      run: bun oxfmt --write {staged_files}
+      run: |
+        files=$(echo {staged_files} | tr ' ' '\n' | grep -E '\.(js|ts|tsx|mjs|cjs|json|yml|yaml|css)$' || true)
+        [ -n "$files" ] && bun oxfmt --write $files || true
       stage_fixed: true
